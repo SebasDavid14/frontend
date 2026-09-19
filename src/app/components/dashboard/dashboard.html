@@ -1,0 +1,20 @@
+<div style="padding: 20px; font-family: sans-serif;">
+  <nav style="margin-bottom: 20px;">
+    <a routerLink="/dashboard"><strong>Dashboard</strong></a> | 
+    <a routerLink="/tasks">Gestión de Tareas</a> | 
+    <a routerLink="/profile">Perfil de Usuario</a> | 
+    <button (click)="logout()">Cerrar Sesión</button>
+  </nav>
+
+  <h2>Panel Principal</h2>
+  <div style="display: flex; gap: 20px;">
+    <div style="border: 1px solid #ccc; padding: 20px; border-radius: 5px;">
+      <h3>Total de Tareas</h3>
+      <p style="font-size: 2em; text-align: center;">{{ totalTasks }}</p>
+    </div>
+    <div style="border: 1px solid #ccc; padding: 20px; border-radius: 5px;">
+      <h3>Tareas Completadas</h3>
+      <p style="font-size: 2em; text-align: center; color: green;">{{ completedTasks }}</p>
+    </div>
+  </div>
+</div>

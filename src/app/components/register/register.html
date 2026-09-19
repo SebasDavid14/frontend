@@ -1,0 +1,18 @@
+<div style="max-width: 400px; margin: 50px auto; font-family: sans-serif;">
+  <h2>Registro de Usuario</h2>
+  <form (ngSubmit)="onRegister()">
+    <div>
+      <label>Nuevo Usuario:</label><br>
+      <input type="text" [(ngModel)]="userData.username" name="username" required style="width: 100%; padding: 8px;">
+    </div>
+    <br>
+    <div>
+      <label>Contraseña:</label><br>
+      <input type="password" [(ngModel)]="userData.password" name="password" required style="width: 100%; padding: 8px;">
+    </div>
+    <br>
+    <button type="submit" style="padding: 10px 20px; cursor: pointer;">Registrarse</button>
+  </form>
+  <p *ngIf="message">{{ message }}</p>
+  <p>¿Ya tienes cuenta? <a routerLink="/login">Inicia sesión</a></p>
+</div>

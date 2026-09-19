@@ -1,0 +1,37 @@
+<div style="padding: 20px; font-family: sans-serif;">
+  <a routerLink="/dashboard">← Volver al Dashboard</a>
+  <h2>Gestión de Tareas (CRUD con JWT)</h2>
+
+  <!-- Formulario de Creación (POST) -->
+  <div style="margin-bottom: 20px; border: 1px solid #ccc; padding: 15px;">
+    <h3>Crear Tarea</h3>
+    <input type="text" placeholder="Título" [(ngModel)]="newTask.title" style="padding: 5px; margin-right: 10px;">
+    <input type="text" placeholder="Descripción" [(ngModel)]="newTask.description" style="padding: 5px; margin-right: 10px;">
+    <button (click)="add()">Guardar (POST)</button>
+  </div>
+
+  <!-- Tabla de Listado (GET, PUT, DELETE) -->
+  <table border="1" cellpadding="10" style="width: 100%; border-collapse: collapse;">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Título</th>
+        <th>Descripción</th>
+        <th>Estado</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let t of tasks">
+        <td>{{ t.id }}</td>
+        <td>{{ t.title }}</td>
+        <td>{{ t.description }}</td>
+        <td>{{ t.completed ? 'Completada' : 'Pendiente' }}</td>
+        <td>
+          <button (click)="toggle(t)">Cambiar Estado (PUT)</button>
+          <button (click)="delete(t.id)" style="color: red; margin-left: 5px;">Eliminar (DELETE)</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
