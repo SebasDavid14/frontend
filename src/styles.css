@@ -1,14 +1,19 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
 
 :root {
-  --bg-main: #121212;
-  --bg-card: #1e1e1e;
-  --bg-card-hover: #252525;
-  --accent-red: #e50914;
-  --accent-red-hover: #b80710;
-  --text-primary: #ffffff;
-  --text-secondary: #a0a0a0;
-  --border-color: #2a2a2a;
+  --bg-gradient: radial-gradient(circle at 15% 15%, #1a0818 0%, #0d0e15 50%, #050508 100%);
+  --glass-bg: rgba(22, 24, 34, 0.65);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-hover: rgba(255, 255, 255, 0.12);
+  
+  --primary-accent: #ff2a5f;
+  --secondary-accent: #8a2be2;
+  --gradient-accent: linear-gradient(135deg, #ff2a5f 0%, #8a2be2 100%);
+  --gradient-accent-hover: linear-gradient(135deg, #ff477e 0%, #9b42f5 100%);
+  
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --shadow-glow: 0 8px 32px 0 rgba(255, 42, 95, 0.15);
 }
 
 * {
@@ -18,8 +23,10 @@
 }
 
 body {
-  background-color: var(--bg-main);
-  color: var(--text-primary);
-  font-family: 'Inter', sans-serif;
+  background: var(--bg-gradient);
+  background-attachment: fixed;
+  color: var(--text-main);
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   min-height: 100vh;
+  overflow-x: hidden;
 }
