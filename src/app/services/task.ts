@@ -14,7 +14,7 @@ export interface Task {
   providedIn: 'root'
 })
 export class TaskService {
-  private apiUrl = 'http://localhost:8080/api/tasks';
+  private apiUrl = 'https://backend-production-8aec6.up.railway.app/api/tasks'; // Ajusta la ruta del endpoint según tu controller
 
   constructor(private http: HttpClient) {}
 
