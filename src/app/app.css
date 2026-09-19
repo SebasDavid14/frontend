@@ -1,0 +1,41 @@
+/* Layout del Nav */
+nav {
+  background-color: #1a1a1a;
+  border-bottom: 1px solid var(--border-color);
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+nav a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: color 0.2s ease, border-bottom 0.2s ease;
+  padding-bottom: 4px;
+}
+
+nav a:hover, nav a.active {
+  color: var(--accent-red);
+  border-bottom: 2px solid var(--accent-red);
+}
+
+/* Botón de Cerrar Sesión */
+nav button {
+  margin-left: auto;
+  background-color: transparent;
+  color: #ff4d4d;
+  border: 1px solid #ff4d4d;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+nav button:hover {
+  background-color: #ff4d4d;
+  color: #ffffff;
+}
