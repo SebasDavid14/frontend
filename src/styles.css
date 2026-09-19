@@ -1,17 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
 :root {
-  --bg-gradient: radial-gradient(circle at 10% 10%, #1e092b 0%, #0d0f17 60%, #050608 100%);
-  --glass-bg: rgba(20, 22, 34, 0.75);
+  --bg-gradient: radial-gradient(circle at 15% 15%, #1a0818 0%, #0d0e15 50%, #050508 100%);
+  --glass-bg: rgba(22, 24, 34, 0.65);
   --glass-border: rgba(255, 255, 255, 0.08);
   --glass-hover: rgba(255, 255, 255, 0.12);
   
-  --primary: #ff2a5f;
-  --secondary: #8a2be2;
-  --accent-gradient: linear-gradient(135deg, #ff2a5f 0%, #8a2be2 100%);
-  --accent-hover: linear-gradient(135deg, #ff477e 0%, #9b42f5 100%);
+  --primary-accent: #ff2a5f;
+  --secondary-accent: #8a2be2;
+  --gradient-accent: linear-gradient(135deg, #ff2a5f 0%, #8a2be2 100%);
+  --gradient-accent-hover: linear-gradient(135deg, #ff477e 0%, #9b42f5 100%);
   
-  --text-primary: #f8fafc;
+  --text-main: #f8fafc;
   --text-muted: #94a3b8;
-  --glow-shadow: 0 8px 32px 0 rgba(255, 42, 95, 0.2);
+  --shadow-glow: 0 8px 32px 0 rgba(255, 42, 95, 0.15);
 }
 
 * {
@@ -23,18 +25,8 @@
 body {
   background: var(--bg-gradient);
   background-attachment: fixed;
-  color: var(--text-primary);
-  font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+  color: var(--text-main);
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   min-height: 100vh;
   overflow-x: hidden;
-}
-
-/* Animaciones suaves */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(15px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.animate-fade {
-  animation: fadeIn 0.4s ease-out forwards;
 }

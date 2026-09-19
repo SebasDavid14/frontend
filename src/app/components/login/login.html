@@ -1,32 +1,18 @@
-<div class="auth-wrapper animate-fade">
-  <div class="auth-card">
-    <div class="auth-header">
-      <div class="icon-circle">
-        <i class="bi bi-person-circle"></i>
-      </div>
-      <h2>Iniciar Sesión</h2>
-      <p>Ingresa tus credenciales para acceder al panel</p>
+<div style="max-width: 400px; margin: 50px auto; font-family: sans-serif;">
+  <h2>Iniciar Sesión</h2>
+  <form (ngSubmit)="onLogin()">
+    <div>
+      <label>Usuario:</label><br>
+      <input type="text" [(ngModel)]="credentials.username" name="username" required style="width: 100%; padding: 8px;">
     </div>
-
-    <form class="auth-form">
-      <div class="input-group">
-        <label><i class="bi bi-envelope"></i> Correo Electrónico</label>
-        <input type="email" placeholder="ejemplo@dominio.com" required>
-      </div>
-
-      <div class="input-group">
-        <label><i class="bi bi-key"></i> Contraseña</label>
-        <input type="password" placeholder="••••••••" required>
-      </div>
-
-      <button type="submit" class="btn-submit">
-        <span>Ingresar a la Plataforma</span>
-        <i class="bi bi-arrow-right-short"></i>
-      </button>
-    </form>
-
-    <div class="auth-footer">
-      <span>¿No tienes una cuenta? <a routerLink="/register">Regístrate aquí</a></span>
+    <br>
+    <div>
+      <label>Contraseña:</label><br>
+      <input type="password" [(ngModel)]="credentials.password" name="password" required style="width: 100%; padding: 8px;">
     </div>
-  </div>
+    <br>
+    <button type="submit" style="padding: 10px 20px; cursor: pointer;">Entrar</button>
+  </form>
+  <p style="color: red;" *ngIf="errorMessage">{{ errorMessage }}</p>
+  <p>¿No tienes cuenta? <a routerLink="/register">Regístrate aquí</a></p>
 </div>

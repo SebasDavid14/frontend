@@ -1,69 +1,41 @@
-.app-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 3rem;
-  background: rgba(13, 15, 23, 0.8);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--glass-border);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
-
-.logo {
-  font-size: 1.4rem;
-  font-weight: 800;
-  letter-spacing: -0.5px;
+/* Layout del Nav */
+nav {
+  background-color: #1a1a1a;
+  border-bottom: 1px solid var(--border-color);
+  padding: 1rem 2rem;
   display: flex;
   align-items: center;
-  gap: 0.6rem;
-  color: #fff;
-}
-
-.logo i {
-  color: var(--primary);
-  font-size: 1.6rem;
-}
-
-.logo b {
-  color: var(--primary);
-}
-
-.nav-links {
-  display: flex;
   gap: 1.5rem;
-  align-items: center;
 }
 
-.nav-links a {
-  color: var(--text-muted);
+nav a {
+  color: var(--text-secondary);
   text-decoration: none;
   font-weight: 600;
   font-size: 0.95rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  transition: all 0.3s ease;
-  padding: 0.5rem 0.8rem;
-  border-radius: 8px;
+  transition: color 0.2s ease, border-bottom 0.2s ease;
+  padding-bottom: 4px;
 }
 
-.nav-links a:hover, .nav-links a.active {
-  color: #fff;
-  background: rgba(255, 255, 255, 0.05);
+nav a:hover, nav a.active {
+  color: var(--accent-red);
+  border-bottom: 2px solid var(--accent-red);
 }
 
-.nav-links a.active {
-  border-bottom: 2px solid var(--primary);
+/* Botón de Cerrar Sesión */
+nav button {
+  margin-left: auto;
+  background-color: transparent;
+  color: #ff4d4d;
+  border: 1px solid #ff4d4d;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-.btn-nav.highlight {
-  background: var(--accent-gradient);
-  color: #fff !important;
-  box-shadow: var(--glow-shadow);
-}
-
-.btn-nav.highlight:hover {
-  transform: translateY(-2px);
+nav button:hover {
+  background-color: #ff4d4d;
+  color: #ffffff;
 }
