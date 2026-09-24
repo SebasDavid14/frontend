@@ -11,7 +11,7 @@ import { TaskService, Tarea } from '../../services/task';
   templateUrl: './tasks.html',
   styleUrl: './tasks.css'
 })
-export class TasksComponent implements OnInit {
+export class Tasks implements OnInit {
 
   nuevaTarea: Tarea = {
     titulo: '',
