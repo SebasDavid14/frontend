@@ -10,7 +10,7 @@ import { Auth } from '../../services/auth';
   imports: [CommonModule, FormsModule, RouterLink],
   templateUrl: './register.html'
 })
-export class RegisterComponent {
+export class Register {
   userData = { username: '', password: '' };
   message = '';
 

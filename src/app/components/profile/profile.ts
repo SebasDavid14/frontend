@@ -9,7 +9,7 @@ import { Auth } from '../../services/auth';
   imports: [CommonModule, RouterLink],
   templateUrl: './profile.html'
 })
-export class ProfileComponent implements OnInit {
+export class Profile implements OnInit {
   token: string | null = '';
 
   constructor(private authService: Auth) {}
