@@ -2,44 +2,78 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
-import { TaskService ,Task } from '../../services/task';
+import { TaskService, Tarea } from '../../services/task';
 
 @Component({
   selector: 'app-tasks',
   standalone: true,
   imports: [CommonModule, FormsModule, RouterLink],
-  templateUrl: './tasks.html'
+  templateUrl: './tasks.html',
+  styleUrl: './tasks.css'
 })
-export class Tasks implements OnInit {
-  tasks: Task[] = [];
-  newTask: Task = { title: '', description: '', completed: false };
+export class TasksComponent implements OnInit {
+
+  nuevaTarea: Tarea = {
+    titulo: '',
+    descripcion: '',
+    completado: false
+  };
+
+  tareas: Tarea[] = [];
 
   constructor(private taskService: TaskService) {}
 
   ngOnInit(): void {
-    this.loadTasks();
+    this.cargarTareas();
   }
 
-  loadTasks(): void {
-    this.taskService.getTasks().subscribe(data => this.tasks = data);
-  }
-
-  add(): void {
-    if (!this.newTask.title) return;
-    this.taskService.createTask(this.newTask).subscribe(() => {
-      this.newTask = { title: '', description: '', completed: false };
-      this.loadTasks();
+  cargarTareas(): void {
+    this.taskService.getTareas().subscribe({
+      next: (data: Tarea[]) => {
+        this.tareas = data;
+      },
+      error: (err: any) => {
+        console.error('Error al obtener la lista de tareas:', err);
+      }
     });
   }
 
-  toggle(task: Task): void {
-    if (!task.id) return;
-    task.completed = !task.completed;
-    this.taskService.updateTask(task.id, task).subscribe(() => this.loadTasks());
+  add(): void {
+    if (!this.nuevaTarea.titulo.trim()) {
+      alert('Por favor, ingresa un título');
+      return;
+    }
+
+    this.taskService.crearTarea(this.nuevaTarea).subscribe({
+      next: (res: Tarea) => {
+        console.log('Tarea guardada exitosamente:', res);
+        this.nuevaTarea = { titulo: '', descripcion: '', completado: false };
+        this.cargarTareas();
+      },
+      error: (err: any) => {
+        console.error('Error al guardar la tarea:', err);
+      }
+    });
   }
 
-  delete(id?: number): void {
+  toggle(tarea: Tarea): void {
+    if (!tarea.id) return;
+    
+    const tareaActualizada: Tarea = { ...tarea, completado: !tarea.completado };
+    this.taskService.actualizarTarea(tarea.id, tareaActualizada).subscribe({
+      next: () => this.cargarTareas(),
+      error: (err: any) => console.error('Error al actualizar tarea:', err)
+    });
+  }
+
+  delete(id: number | undefined): void {
     if (!id) return;
-    this.taskService.deleteTask(id).subscribe(() => this.loadTasks());
+
+    if (confirm('¿Estás seguro de eliminar esta tarea?')) {
+      this.taskService.eliminarTarea(id).subscribe({
+        next: () => this.cargarTareas(),
+        error: (err: any) => console.error('Error al eliminar tarea:', err)
+      });
+    }
   }
 }

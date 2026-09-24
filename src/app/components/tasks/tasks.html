@@ -5,12 +5,24 @@
   <!-- Formulario de Creación (POST) -->
   <div style="margin-bottom: 20px; border: 1px solid #ccc; padding: 15px;">
     <h3>Crear Tarea</h3>
-    <input type="text" placeholder="Título" [(ngModel)]="newTask.title" style="padding: 5px; margin-right: 10px;">
-    <input type="text" placeholder="Descripción" [(ngModel)]="newTask.description" style="padding: 5px; margin-right: 10px;">
+    <input 
+      type="text" 
+      placeholder="Título" 
+      [(ngModel)]="nuevaTarea.titulo" 
+      name="titulo" 
+      style="padding: 5px; margin-right: 10px;">
+    
+    <input 
+      type="text" 
+      placeholder="Descripción" 
+      [(ngModel)]="nuevaTarea.descripcion" 
+      name="descripcion" 
+      style="padding: 5px; margin-right: 10px;">
+    
     <button (click)="add()">Guardar (POST)</button>
   </div>
 
-  <!-- Tabla de Listado (GET, PUT, DELETE) -->
+  <!-- Tabla de Listado -->
   <table border="1" cellpadding="10" style="width: 100%; border-collapse: collapse;">
     <thead>
       <tr>
@@ -22,11 +34,11 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let t of tasks">
+      <tr *ngFor="let t of tareas">
         <td>{{ t.id }}</td>
-        <td>{{ t.title }}</td>
-        <td>{{ t.description }}</td>
-        <td>{{ t.completed ? 'Completada' : 'Pendiente' }}</td>
+        <td>{{ t.titulo }}</td>
+        <td>{{ t.descripcion }}</td>
+        <td>{{ t.completado ? 'Completada' : 'Pendiente' }}</td>
         <td>
           <button (click)="toggle(t)">Cambiar Estado (PUT)</button>
           <button (click)="delete(t.id)" style="color: red; margin-left: 5px;">Eliminar (DELETE)</button>
