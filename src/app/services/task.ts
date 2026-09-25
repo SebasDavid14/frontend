@@ -13,8 +13,7 @@ export interface Tarea {
   providedIn: 'root'
 })
 export class TaskService {
-  // Ajusta esta URL a tu endpoint en Railway o localhost si estás probando localmente
-  private apiUrl = 'https://backend-production-8aec6.up.railway.app/api/tasks';
+  private apiUrl = 'https://backend-production-8aec6.up.railway.app/api/tareas';
 
   constructor(private http: HttpClient) {}
 
