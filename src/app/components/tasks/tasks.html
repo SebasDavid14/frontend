@@ -2,7 +2,7 @@
   <a routerLink="/dashboard" style="color: #4ea8de; text-decoration: none;">← Volver al Dashboard</a>
   <h2>Gestión de Tareas</h2>
 
-  <!-- Formulario con ngSubmit para prevenir el comportamiento por defecto de la pagina -->
+  <!-- El (ngSubmit) frena la recarga automática de la página y ejecuta add() en segundo plano -->
   <form (ngSubmit)="add()" style="margin-bottom: 20px; border: 1px solid #444; padding: 15px; border-radius: 6px;">
     <h3>Crear Nueva Tarea</h3>
     <input 
