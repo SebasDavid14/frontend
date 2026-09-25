@@ -1,9 +1,25 @@
-<div style="padding: 20px; font-family: sans-serif;">
-  <a routerLink="/dashboard">← Volver al Dashboard</a>
-  <h2>Perfil y Token JWT</h2>
+<div class="layout-container">
+  <header class="top-navbar">
+    <div class="nav-brand">TaskApp</div>
+    <nav class="nav-links">
+      <a routerLink="/dashboard">Dashboard</a>
+      <a routerLink="/tasks">Gestión de Tareas</a>
+      <a routerLink="/profile" class="active">Perfil de Usuario</a>
+    </nav>
+    <a routerLink="/dashboard" class="btn-back">← Volver</a>
+  </header>
 
-  <div style="background: #f4f4f4; padding: 15px; border-radius: 5px; word-break: break-all;">
-    <h3>Token de Sesión Actual:</h3>
-    <code>{{ token }}</code>
-  </div>
+  <main class="main-content">
+    <div class="page-header">
+      <h2>Perfil y Token JWT</h2>
+      <p>Información de autenticación activa</p>
+    </div>
+
+    <div class="card profile-card">
+      <h3>Token de Sesión Actual</h3>
+      <div class="token-box">
+        <code>{{ token }}</code>
+      </div>
+    </div>
+  </main>
 </div>

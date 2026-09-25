@@ -1,18 +1,28 @@
-<div style="max-width: 400px; margin: 50px auto; font-family: sans-serif;">
-  <h2>Iniciar Sesión</h2>
-  <form (ngSubmit)="onLogin()">
-    <div>
-      <label>Usuario:</label><br>
-      <input type="text" [(ngModel)]="credentials.username" name="username" required style="width: 100%; padding: 8px;">
+<div class="auth-container">
+  <div class="auth-card">
+    <div class="auth-header">
+      <h2>¡Bienvenido de nuevo!</h2>
+      <p>Ingresa tus credenciales para acceder</p>
     </div>
-    <br>
-    <div>
-      <label>Contraseña:</label><br>
-      <input type="password" [(ngModel)]="credentials.password" name="password" required style="width: 100%; padding: 8px;">
+
+    <form (ngSubmit)="onLogin()" class="auth-form">
+      <div class="form-group">
+        <label>Usuario</label>
+        <input type="text" [(ngModel)]="credentials.username" name="username" required placeholder="Tu nombre de usuario">
+      </div>
+
+      <div class="form-group">
+        <label>Contraseña</label>
+        <input type="password" [(ngModel)]="credentials.password" name="password" required placeholder="••••••••">
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-full">Entrar</button>
+    </form>
+
+    <p class="error-msg" *ngIf="errorMessage">{{ errorMessage }}</p>
+    
+    <div class="auth-footer">
+      <p>¿No tienes cuenta? <a routerLink="/register">Regístrate aquí</a></p>
     </div>
-    <br>
-    <button type="submit" style="padding: 10px 20px; cursor: pointer;">Entrar</button>
-  </form>
-  <p style="color: red;" *ngIf="errorMessage">{{ errorMessage }}</p>
-  <p>¿No tienes cuenta? <a routerLink="/register">Regístrate aquí</a></p>
+  </div>
 </div>
