@@ -8,7 +8,8 @@ import { Auth } from '../../services/auth';
   selector: 'app-login',
   standalone: true,
   imports: [CommonModule, FormsModule, RouterLink],
-  templateUrl: './login.html'
+  templateUrl: './login.html',
+  styleUrl: './login.css'
 })
 export class Login {
   credentials = { username: '', password: '' };

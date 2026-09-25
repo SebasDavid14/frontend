@@ -6,19 +6,31 @@
       <a routerLink="/tasks">Gestión de Tareas</a>
       <a routerLink="/profile" class="active">Perfil de Usuario</a>
     </nav>
-    <a routerLink="/dashboard" class="btn-back">← Volver</a>
+    <a routerLink="/dashboard" class="btn-back">← Volver al Dashboard</a>
   </header>
 
   <main class="main-content">
     <div class="page-header">
-      <h2>Perfil y Token JWT</h2>
-      <p>Información de autenticación activa</p>
+      <h2>Perfil y Sesión de Usuario</h2>
+      <p>Información técnica de autenticación JWT</p>
     </div>
 
     <div class="card profile-card">
-      <h3>Token de Sesión Actual</h3>
-      <div class="token-box">
-        <code>{{ token }}</code>
+      <div class="profile-header-info">
+        <div class="avatar-box">👤</div>
+        <div>
+          <h3>Usuario Autenticado</h3>
+          <span class="badge-active">Sesión Activa</span>
+        </div>
+      </div>
+
+      <hr class="divider">
+
+      <div class="token-section">
+        <label>Token JWT de Sesión Actual:</label>
+        <div class="token-box">
+          <code>{{ token }}</code>
+        </div>
       </div>
     </div>
   </main>

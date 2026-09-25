@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { TaskService, Task } from '../../services/task';
@@ -18,13 +18,22 @@ export class Dashboard implements OnInit {
   constructor(
     private taskService: TaskService, 
     public authService: Auth, 
-    private router: Router
+    private router: Router,
+    private cd: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
-    this.taskService.getTasks().subscribe((tasks: Task[]) => {
-      this.totalTasks = tasks.length;
-      this.completedTasks = tasks.filter((t: Task) => t.completed).length;
+    this.loadMetrics();
+  }
+
+  loadMetrics(): void {
+    this.taskService.getTasks().subscribe({
+      next: (tasks: Task[]) => {
+        this.totalTasks = tasks.length;
+        this.completedTasks = tasks.filter((t: Task) => t.completed).length;
+        this.cd.detectChanges(); // Forzamos a la plantilla a mostrar las métricas reales
+      },
+      error: (err) => console.error('Error al obtener métricas:', err)
     });
   }
 

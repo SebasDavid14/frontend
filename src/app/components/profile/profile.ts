@@ -7,7 +7,8 @@ import { Auth } from '../../services/auth';
   selector: 'app-profile',
   standalone: true,
   imports: [CommonModule, RouterLink],
-  templateUrl: './profile.html'
+  templateUrl: './profile.html',
+  styleUrl: './profile.css'
 })
 export class Profile implements OnInit {
   token: string | null = '';
