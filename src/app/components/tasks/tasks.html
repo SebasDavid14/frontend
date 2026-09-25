@@ -2,15 +2,16 @@
   <a routerLink="/dashboard" style="color: #4ea8de; text-decoration: none;">← Volver al Dashboard</a>
   <h2>Gestión de Tareas</h2>
 
-  <!-- Formulario de Creación -->
-  <div style="margin-bottom: 20px; border: 1px solid #444; padding: 15px; border-radius: 6px;">
+  <!-- Formulario con ngSubmit para prevenir el comportamiento por defecto de la pagina -->
+  <form (ngSubmit)="add()" style="margin-bottom: 20px; border: 1px solid #444; padding: 15px; border-radius: 6px;">
     <h3>Crear Nueva Tarea</h3>
     <input 
       type="text" 
       placeholder="Título" 
       [(ngModel)]="newTask.title" 
       name="title" 
-      style="padding: 8px; margin-right: 10px; width: 200px;">
+      style="padding: 8px; margin-right: 10px; width: 200px;"
+      required>
     
     <input 
       type="text" 
@@ -19,10 +20,10 @@
       name="description" 
       style="padding: 8px; margin-right: 10px; width: 300px;">
     
-    <button (click)="add()" style="padding: 8px 16px; background-color: #2e7d32; color: white; border: none; cursor: pointer; border-radius: 4px;">
+    <button type="submit" style="padding: 8px 16px; background-color: #2e7d32; color: white; border: none; cursor: pointer; border-radius: 4px;">
       Guardar
     </button>
-  </div>
+  </form>
 
   <!-- Tabla de Listado -->
   <table border="1" cellpadding="10" style="width: 100%; border-collapse: collapse; text-align: left;">
@@ -46,10 +47,10 @@
           </span>
         </td>
         <td>
-          <button (click)="toggle(t)" style="padding: 5px 10px; cursor: pointer; margin-right: 5px;">
+          <button type="button" (click)="toggle(t)" style="padding: 5px 10px; cursor: pointer; margin-right: 5px;">
             Cambiar Estado
           </button>
-          <button (click)="delete(t.id)" style="padding: 5px 10px; background-color: #c62828; color: white; border: none; cursor: pointer; border-radius: 4px;">
+          <button type="button" (click)="delete(t.id)" style="padding: 5px 10px; background-color: #c62828; color: white; border: none; cursor: pointer; border-radius: 4px;">
             Eliminar
           </button>
         </td>
