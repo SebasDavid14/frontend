@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 import { Login } from './components/login/login';
 import { Register } from './components/register/register';
 import { Dashboard } from './components/dashboard/dashboard';
-import { Tasks } from './components/tasks/tasks';
+import { Tasks} from './components/tasks/tasks';
 import { Profile } from './components/profile/profile';
 
 export const routes: Routes = [

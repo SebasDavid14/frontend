@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
-import { TaskService, Tarea } from '../../services/task';
+import { TaskService, Task } from '../../services/task';
 
 @Component({
   selector: 'app-tasks',
@@ -13,24 +13,24 @@ import { TaskService, Tarea } from '../../services/task';
 })
 export class Tasks implements OnInit {
 
-  nuevaTarea: Tarea = {
-    titulo: '',
-    descripcion: '',
-    completado: false
+  newTask: Task = {
+    title: '',
+    description: '',
+    completed: false
   };
 
-  tareas: Tarea[] = [];
+  tasks: Task[] = [];
 
   constructor(private taskService: TaskService) {}
 
   ngOnInit(): void {
-    this.cargarTareas();
+    this.loadTasks();
   }
 
-  cargarTareas(): void {
-    this.taskService.getTareas().subscribe({
-      next: (data: Tarea[]) => {
-        this.tareas = data;
+  loadTasks(): void {
+    this.taskService.getTasks().subscribe({
+      next: (data: Task[]) => {
+        this.tasks = data;
       },
       error: (err: any) => {
         console.error('Error al obtener la lista de tareas:', err);
@@ -39,16 +39,17 @@ export class Tasks implements OnInit {
   }
 
   add(): void {
-    if (!this.nuevaTarea.titulo.trim()) {
-      alert('Por favor, ingresa un título');
+    if (!this.newTask.title.trim()) {
+      alert('Ingresa el título de la tarea.');
       return;
     }
 
-    this.taskService.crearTarea(this.nuevaTarea).subscribe({
-      next: (res: Tarea) => {
-        console.log('Tarea guardada exitosamente:', res);
-        this.nuevaTarea = { titulo: '', descripcion: '', completado: false };
-        this.cargarTareas();
+    this.taskService.addTask(this.newTask).subscribe({
+      next: (res: Task) => {
+        // Limpiamos los campos del formulario
+        this.newTask = { title: '', description: '', completed: false };
+        // Refrescamos la tabla
+        this.loadTasks();
       },
       error: (err: any) => {
         console.error('Error al guardar la tarea:', err);
@@ -56,22 +57,20 @@ export class Tasks implements OnInit {
     });
   }
 
-  toggle(tarea: Tarea): void {
-    if (!tarea.id) return;
-    
-    const tareaActualizada: Tarea = { ...tarea, completado: !tarea.completado };
-    this.taskService.actualizarTarea(tarea.id, tareaActualizada).subscribe({
-      next: () => this.cargarTareas(),
+  toggle(task: Task): void {
+    if (!task.id) return;
+    const updatedTask: Task = { ...task, completed: !task.completed };
+    this.taskService.updateTask(task.id, updatedTask).subscribe({
+      next: () => this.loadTasks(),
       error: (err: any) => console.error('Error al actualizar tarea:', err)
     });
   }
 
   delete(id: number | undefined): void {
     if (!id) return;
-
-    if (confirm('¿Estás seguro de eliminar esta tarea?')) {
-      this.taskService.eliminarTarea(id).subscribe({
-        next: () => this.cargarTareas(),
+    if (confirm('¿Deseas eliminar esta tarea?')) {
+      this.taskService.deleteTask(id).subscribe({
+        next: () => this.loadTasks(),
         error: (err: any) => console.error('Error al eliminar tarea:', err)
       });
     }

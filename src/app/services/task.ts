@@ -2,34 +2,35 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-export interface Tarea {
+export interface Task {
   id?: number;
-  titulo: string;
-  descripcion: string;
-  completado?: boolean;
+  title: string;
+  description: string;
+  completed?: boolean;
 }
 
 @Injectable({
   providedIn: 'root'
 })
 export class TaskService {
-  private apiUrl = 'https://backend-production-8aec6.up.railway.app/api/tareas';
+  // Apuntamos correctamente al endpoint en inglés de Railway
+  private apiUrl = 'https://backend-production-8aec6.up.railway.app/api/tasks';
 
   constructor(private http: HttpClient) {}
 
-  getTareas(): Observable<Tarea[]> {
-    return this.http.get<Tarea[]>(this.apiUrl);
+  getTasks(): Observable<Task[]> {
+    return this.http.get<Task[]>(this.apiUrl);
   }
 
-  crearTarea(tarea: Tarea): Observable<Tarea> {
-    return this.http.post<Tarea>(this.apiUrl, tarea);
+  addTask(task: Task): Observable<Task> {
+    return this.http.post<Task>(this.apiUrl, task);
   }
 
-  actualizarTarea(id: number, tarea: Tarea): Observable<Tarea> {
-    return this.http.put<Tarea>(`${this.apiUrl}/${id}`, tarea);
+  updateTask(id: number, task: Task): Observable<Task> {
+    return this.http.put<Task>(`${this.apiUrl}/${id}`, task);
   }
 
-  eliminarTarea(id: number): Observable<void> {
+  deleteTask(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 }
