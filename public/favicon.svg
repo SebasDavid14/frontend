@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Fondo redondeado azul moderno -->
+  <rect width="512" height="512" rx="110" fill="#2563eb"/>
+  
+  <!-- Base de Libreta / Clipboard de Tareas -->
+  <path d="M160 120h192c16.5 0 30 13.5 30 30v260c0 16.5-13.5 30-30 30H160c-16.5 0-30-13.5-30-30V150c0-16.5 13.5-30 30-30z" fill="white" opacity="0.15"/>
+  <path d="M170 140h172c11 0 20 9 20 20v240c0 11-9 20-20 20H170c-11 0-20-9-20-20V160c0-11 9-20 20-20z" fill="#ffffff"/>
+  
+  <!-- Gancho superior del clipboard -->
+  <path d="M210 90h92a10 10 0 0 1 10 10v20H200V100a10 10 0 0 1 10-10z" fill="#1d4ed8"/>
+  
+  <!-- Inicial 'T' estilizada en color azul -->
+  <path d="M205 180h102v18H205zm36 18h30v80h-30z" fill="#2563eb"/>
+  
+  <!-- Inicial 'A' estilizada a un lado -->
+  <path d="M285 278l22-80h24l22 80h-20l-5-18h-38l-5 18h-20zm20-34h26l-13-46h-1z" fill="#2563eb"/>
+  
+  <!-- Elemento de Checklist / Checkmark Verde completado -->
+  <path d="M190 325l35 35 75-75" fill="none" stroke="#10b981" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
